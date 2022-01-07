@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
 
-  final signInController = Get.put(MainController());
+  final mainController = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget {
         child: FloatingActionButton(
           isExtended: true,
           elevation: 0,
-          onPressed: () => signInController.changeTab(4),
+          onPressed: () => mainController.changeTab(4),
           child: const Icon(FontAwesomeIcons.search),
           backgroundColor: Colors.transparent,
         ),
@@ -47,38 +47,38 @@ class MainPage extends StatelessWidget {
             IconButton(
               icon: Obx(()=>Icon(
                 FontAwesomeIcons.home,
-                color: signInController.currentIndex.value == 0
+                color: mainController.currentIndex.value == 0
                     ? const Color(0xFFFF679B)
                     : const Color(0xFF6E7FAA),
               )),
-              onPressed: () => signInController.changeTab(0),
+              onPressed: () => mainController.changeTab(0),
             ),
             IconButton(
               icon: Obx(()=>Icon(
                 FontAwesomeIcons.thLarge,
-                color: signInController.currentIndex.value == 1
+                color: mainController.currentIndex.value == 1
                     ? const Color(0xFFFF679B)
                     : const Color(0xFF6E7FAA),
               )),
-              onPressed: () => signInController.changeTab(1),
+              onPressed: () => mainController.changeTab(1),
             ),
             IconButton(
               icon: Obx(()=>Icon(
                 FontAwesomeIcons.shoppingCart,
-                color: signInController.currentIndex.value == 2
+                color: mainController.currentIndex.value == 2
                     ? const Color(0xFFFF679B)
                     : const Color(0xFF6E7FAA),
               )),
-              onPressed: () => signInController.changeTab(2),
+              onPressed: () => mainController.changeTab(2),
             ),
             IconButton(
               icon: Obx(()=>Icon(
                 FontAwesomeIcons.solidUser,
-                color: signInController.currentIndex.value == 3
+                color: mainController.currentIndex.value == 3
                     ? const Color(0xFFFF679B)
                     : const Color(0xFF6E7FAA),
               )),
-              onPressed: () => signInController.changeTab(3),
+              onPressed: () => mainController.changeTab(3),
             ),
           ],
         ),
@@ -88,14 +88,14 @@ class MainPage extends StatelessWidget {
 
   Widget getBody() {
     List<Widget> pages = [
-      const HomeTab(),
+      HomeTab(),
       const MenuTab(),
       const CartTab(),
       const ProfileTab(),
       const SearchTab(),
     ];
     return Obx(() => IndexedStack(
-          index: signInController.currentIndex.value,
+          index: mainController.currentIndex.value,
           children: pages,
         ));
   }

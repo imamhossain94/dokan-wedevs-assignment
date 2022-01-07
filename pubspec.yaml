@@ -45,5 +45,15 @@ flutter:
        - asset: assets/fonts/roboto/Roboto-Regular.ttf
        - asset: assets/fonts/roboto/Roboto-Thin.ttf
        - asset: assets/fonts/roboto/Roboto-ThinItalic.ttf
-         style: italic
+   - family: Lato
+     fonts:
+       - asset: assets/fonts/lato/Lato-Black.ttf
+       - asset: assets/fonts/lato/Lato-BlackItalic.ttf
+       - asset: assets/fonts/lato/Lato-Bold.ttf
+       - asset: assets/fonts/lato/Lato-BoldItalic.ttf
+       - asset: assets/fonts/lato/Lato-Light.ttf
+       - asset: assets/fonts/lato/Lato-LightItalic.ttf
+       - asset: assets/fonts/lato/Lato-Regular.ttf
+       - asset: assets/fonts/lato/Lato-Thin.ttf
+       - asset: assets/fonts/lato/Lato-ThinItalic.ttf
 
