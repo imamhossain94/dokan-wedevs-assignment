@@ -14,45 +14,41 @@ class HomeTab extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AppBar(
-                title: const Text(
-                  "Product List",
-                  style: TextStyle(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            AppBar(
+              title: const Text(
+                "Product List",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 26,
+                    fontFamily: "Roboto",
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.bold),
+              ),
+              centerTitle: true,
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              actions: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: IconButton(
+                    icon: const Icon(
+                      FontAwesomeIcons.search,
                       color: Colors.black,
-                      fontSize: 26,
-                      fontFamily: "Roboto",
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.bold),
-                ),
-                centerTitle: true,
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                actions: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: IconButton(
-                      icon: const Icon(
-                        FontAwesomeIcons.search,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {
-                        // do something
-                      },
                     ),
-                  )
-                ],
-              )
-            ]
-          ),
+                    onPressed: () {
+                    },
+                  ),
+                )
+              ],
+            )
+          ]),
         ),
         body: Column(
           children: [
             Container(
               alignment: Alignment.center,
-              padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
               height: 60,
               decoration: BoxDecoration(
@@ -69,10 +65,55 @@ class HomeTab extends StatelessWidget {
               child: Row(
                 children: [
                   TextButton.icon(
-                      onPressed: (){},
-                      icon: Icon(FontAwesomeIcons.filter),
-                      label: Text("Filters")
+                      onPressed: () {},
+                      icon: const Icon(
+                        FontAwesomeIcons.filter,
+                        size: 20,
+                        color: Color(0xFFB6BED4),
+                      ),
+                      label: const Text(
+                        "Filters",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: "Lato",
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.normal),
+                      )),
+                  const Spacer(),
+                  DropdownButton<String>(
+                      value: "Sort by",
+                      icon: const Icon(
+                        FontAwesomeIcons.caretDown,
+                        size: 28,
+                        color: Color(0xFFB6BED4),),
+                      //iconSize: 42,
+                      underline: SizedBox(),
+                      onChanged: (String? newValue) {},
+                      items: <String>[
+                        'Sort by',
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontFamily: "Lato",
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.normal),),
+                        );
+                      }).toList()),
+                  IconButton(
+                    icon: const Icon(
+                      FontAwesomeIcons.tasks,
+                      color: Colors.black,
+                      size: 24,
+                    ),
+                    onPressed: () {
+                    },
                   ),
+
                 ],
               ),
             )
@@ -81,4 +122,11 @@ class HomeTab extends StatelessWidget {
       ),
     );
   }
+
+
+
+
+
+
+
 }
