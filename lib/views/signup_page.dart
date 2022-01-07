@@ -1,4 +1,4 @@
-import 'package:dokan_wedevs_assignment/controllers/signin_controller.dart';
+import 'package:dokan_wedevs_assignment/controllers/signup_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,7 +9,7 @@ import 'components/custom_text_field.dart';
 class SignUpPage extends StatelessWidget {
   SignUpPage({Key? key}) : super(key: key);
 
-  final signInController = Get.put(SignInController());
+  final signInController = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
