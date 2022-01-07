@@ -1,14 +1,22 @@
+import 'package:dokan_wedevs_assignment/controllers/main_controller.dart';
+import 'package:dokan_wedevs_assignment/views/tabs/cart_tab.dart';
+import 'package:dokan_wedevs_assignment/views/tabs/home_tab.dart';
+import 'package:dokan_wedevs_assignment/views/tabs/menu_tab.dart';
+import 'package:dokan_wedevs_assignment/views/tabs/profile_tab.dart';
+import 'package:dokan_wedevs_assignment/views/tabs/search_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  MainPage({Key? key}) : super(key: key);
+
+  final signInController = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
+      body: getBody(),
       floatingActionButton: Container(
         height: 56,
         width: 56,
@@ -22,7 +30,7 @@ class MainPage extends StatelessWidget {
         child: FloatingActionButton(
           isExtended: true,
           elevation: 0,
-          onPressed: () {},
+          onPressed: () => signInController.changeTab(4),
           child: const Icon(FontAwesomeIcons.search),
           backgroundColor: Colors.transparent,
         ),
@@ -37,32 +45,40 @@ class MainPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: const Icon(
+              icon: Obx(()=>Icon(
                 FontAwesomeIcons.home,
-                color: Color(0xFF6E7FAA),
-              ),
-              onPressed: () {},
+                color: signInController.currentIndex.value == 0
+                    ? const Color(0xFFFF679B)
+                    : const Color(0xFF6E7FAA),
+              )),
+              onPressed: () => signInController.changeTab(0),
             ),
             IconButton(
-              icon: const Icon(
+              icon: Obx(()=>Icon(
                 FontAwesomeIcons.thLarge,
-                color: Color(0xFF6E7FAA),
-              ),
-              onPressed: () {},
+                color: signInController.currentIndex.value == 1
+                    ? const Color(0xFFFF679B)
+                    : const Color(0xFF6E7FAA),
+              )),
+              onPressed: () => signInController.changeTab(1),
             ),
             IconButton(
-              icon: const Icon(
+              icon: Obx(()=>Icon(
                 FontAwesomeIcons.shoppingCart,
-                color: Color(0xFF6E7FAA),
-              ),
-              onPressed: () {},
+                color: signInController.currentIndex.value == 2
+                    ? const Color(0xFFFF679B)
+                    : const Color(0xFF6E7FAA),
+              )),
+              onPressed: () => signInController.changeTab(2),
             ),
             IconButton(
-              icon: const Icon(
+              icon: Obx(()=>Icon(
                 FontAwesomeIcons.solidUser,
-                color: Color(0xFF6E7FAA),
-              ),
-              onPressed: () {},
+                color: signInController.currentIndex.value == 3
+                    ? const Color(0xFFFF679B)
+                    : const Color(0xFF6E7FAA),
+              )),
+              onPressed: () => signInController.changeTab(3),
             ),
           ],
         ),
@@ -70,10 +86,17 @@ class MainPage extends StatelessWidget {
     );
   }
 
-
-
-
-
-
-
+  Widget getBody() {
+    List<Widget> pages = [
+      const HomeTab(),
+      const MenuTab(),
+      const CartTab(),
+      const ProfileTab(),
+      const SearchTab(),
+    ];
+    return Obx(() => IndexedStack(
+          index: signInController.currentIndex.value,
+          children: pages,
+        ));
+  }
 }
