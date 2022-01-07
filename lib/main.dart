@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'services/theme_service.dart';
 import 'utils/themes.dart';
 import 'utils/themes_mode.dart';
+import 'views/signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       darkTheme: Themes.dark,
       themeMode: ThemeService().theme,
       debugShowCheckedModeBanner: false,
-      home: SignInPage(),
+      home: SignUpPage(),
     );
   }
 }

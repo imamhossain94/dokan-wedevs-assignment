@@ -15,7 +15,8 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -127,25 +128,4 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Widget todoItem({String? title, String? subTitle, VoidCallback? onPressed}) {
-    return Card(
-      color: Colors.redAccent,
-      elevation: 5,
-      child: ListTile(
-        title: Text(
-          title!,
-          style: const TextStyle(color: Colors.white),
-        ),
-        subtitle: Text(
-          subTitle!,
-          style: const TextStyle(color: Colors.white),
-        ),
-        trailing: const Icon(
-          Icons.delete,
-          color: Colors.black,
-        ),
-        onTap: onPressed,
-      ),
-    );
-  }
 }
