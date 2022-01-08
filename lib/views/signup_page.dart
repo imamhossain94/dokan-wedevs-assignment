@@ -1,4 +1,6 @@
 import 'package:dokan_wedevs_assignment/controllers/signup_controller.dart';
+import 'package:dokan_wedevs_assignment/utils/extension.dart';
+import 'package:dokan_wedevs_assignment/views/signin_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,7 +11,16 @@ import 'components/custom_text_field.dart';
 class SignUpPage extends StatelessWidget {
   SignUpPage({Key? key}) : super(key: key);
 
-  final signInController = Get.put(SignUpController());
+  final signUpController = Get.put(SignUpController());
+
+
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,30 +69,30 @@ class SignUpPage extends StatelessWidget {
               ),
 
               CustomTextField(
-                controller: TextEditingController(),
+                controller: nameController,
                 icons: FontAwesomeIcons.solidUser,
                 hint: "Name",
                 isPassword: false,
                 eyeVisibility: false,
               ),
               CustomTextField(
-                controller: TextEditingController(),
+                controller: emailController,
                 icons: FontAwesomeIcons.solidEnvelope,
                 hint: "Email",
                 isPassword: false,
                 eyeVisibility: false,
               ),
               CustomTextField(
-                controller: TextEditingController(),
+                controller: passwordController,
                 icons: FontAwesomeIcons.lock,
                 hint: "Password",
                 isPassword: true,
                 eyeVisibility: false,
               ),
               CustomTextField(
-                controller: TextEditingController(),
+                controller: confirmPasswordController,
                 icons: FontAwesomeIcons.lock,
-                hint: "Confiem Password",
+                hint: "Confirm Password",
                 isPassword: true,
                 eyeVisibility: false,
               ),
@@ -92,9 +103,40 @@ class SignUpPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width - 60,
                   height: 60,
                   child: CupertinoButton(
-                      onPressed: () {},
+                      onPressed: () async{
+
+                        showLoaderDialog(context);
+
+                        String name = nameController.text;
+                        String email = emailController.text;
+                        String password = passwordController.text;
+                        String confirmPassword = confirmPasswordController.text;
+
+                        bool nameValid = name.isNotEmpty?true:false;
+                        bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+                        bool passValid = password.isNotEmpty && confirmPassword.isNotEmpty && password == confirmPassword?true:false;
+
+                        if(nameValid && emailValid && passValid) {
+                          String? error = await signUpController.register(
+                              username: name,
+                              email: email,
+                              password: password
+                          );
+
+                          if (error != null) {
+                            Get.back();
+                            Get.defaultDialog(title: "Oop!", middleText: "Email/Password may incorrect!");
+                          } else {
+                            Get.back();
+                            Get.offAll(const SignInPage());
+                          }
+                        }else{
+                          Get.defaultDialog(title: "Oop!", middleText: "Check Information");
+                        }
+
+                      },
                       child: const Text(
-                        "Login",
+                        "Sign Up",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -144,7 +186,9 @@ class SignUpPage extends StatelessWidget {
                         fontWeight: FontWeight.normal),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.offAll(const SignInPage());
+                    },
                     child: const Text(
                       "Login",
                       style: TextStyle(

@@ -8,3 +8,10 @@ String getCheckedFilter() {
 void setCheckedFilter(String value) async {
   box.write("checked_filter", value);
 }
+
+String? getAuthToken() {
+  return box.read("auth_token");
+}
+void setAuthToken(String value) async {
+  box.write("auth_token", value);
+}

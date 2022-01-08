@@ -1,4 +1,7 @@
 import 'package:dokan_wedevs_assignment/controllers/signin_controller.dart';
+import 'package:dokan_wedevs_assignment/utils/extension.dart';
+import 'package:dokan_wedevs_assignment/views/main_page.dart';
+import 'package:dokan_wedevs_assignment/views/signup_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,10 +9,18 @@ import 'package:get/get.dart';
 import 'components/custom_icon_button.dart';
 import 'components/custom_text_field.dart';
 
-class SignInPage extends StatelessWidget {
-  SignInPage({Key? key}) : super(key: key);
+class SignInPage extends StatefulWidget {
+  const SignInPage({Key? key}) : super(key: key);
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
   final signInController = Get.put(SignInController());
+
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +46,14 @@ class SignInPage extends StatelessWidget {
                 height: 30,
               ),
               CustomTextField(
-                controller: TextEditingController(),
+                controller: emailController,
                 icons: FontAwesomeIcons.solidEnvelope,
                 hint: "Email",
                 isPassword: false,
                 eyeVisibility: false,
               ),
               CustomTextField(
-                controller: TextEditingController(),
+                controller: passwordController,
                 icons: FontAwesomeIcons.lock,
                 hint: "Password",
                 isPassword: true,
@@ -53,7 +64,9 @@ class SignInPage extends StatelessWidget {
                   margin:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+
+                    },
                     child: const Text(
                       "Forgot Password?",
                       style: TextStyle(
@@ -71,7 +84,33 @@ class SignInPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width - 60,
                   height: 60,
                   child: CupertinoButton(
-                      onPressed: () {},
+                      onPressed: () async {
+
+                        showLoaderDialog(context);
+
+
+                        String email = emailController.text;
+                        String password = passwordController.text;
+                        bool emailValid = email.isNotEmpty?true:false; //RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+                        bool passValid = password.isNotEmpty?true:false;
+
+                        if(emailValid && passValid) {
+                          String? error = await signInController.login(
+                              email: email,
+                              password: password);
+
+                          if (error != null) {
+                            Get.back();
+                            Get.defaultDialog(title: "Oop!", middleText: "Email/Password may incorrect!");
+                          } else {
+                            Get.back();
+                            Get.offAll(MainPage());
+                          }
+                        }else{
+                          Get.defaultDialog(title: "Oop!", middleText: "Check Information");
+                        }
+
+                      },
                       child: const Text(
                         "Login",
                         style: TextStyle(
@@ -112,7 +151,9 @@ class SignInPage extends StatelessWidget {
                 height: 50,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.offAll(SignUpPage());
+                },
                 child: const Text(
                   "Create New Account",
                   style: TextStyle(
@@ -129,5 +170,9 @@ class SignInPage extends StatelessWidget {
       ),
     );
   }
+
+
+
+
 
 }
