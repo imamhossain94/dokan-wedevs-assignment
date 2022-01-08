@@ -36,8 +36,7 @@ class HomeTab extends StatelessWidget {
                       FontAwesomeIcons.search,
                       color: Colors.black,
                     ),
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 )
               ],
@@ -86,7 +85,8 @@ class HomeTab extends StatelessWidget {
                       icon: const Icon(
                         FontAwesomeIcons.caretDown,
                         size: 28,
-                        color: Color(0xFFB6BED4),),
+                        color: Color(0xFFB6BED4),
+                      ),
                       //iconSize: 42,
                       underline: SizedBox(),
                       onChanged: (String? newValue) {},
@@ -95,13 +95,15 @@ class HomeTab extends StatelessWidget {
                       ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Text(value,
+                          child: Text(
+                            value,
                             style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontFamily: "Lato",
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.normal),),
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontFamily: "Lato",
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.normal),
+                          ),
                         );
                       }).toList()),
                   IconButton(
@@ -110,23 +112,65 @@ class HomeTab extends StatelessWidget {
                       color: Colors.black,
                       size: 24,
                     ),
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
-
                 ],
               ),
-            )
+            ),
+
+            Expanded(
+              //height: 500,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: GetX<HomeTabController>(builder: (controller) {
+                  return GridView.builder(
+                    itemCount: controller.productLists.length,
+                    physics: const BouncingScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: (1 / 1.726),
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Card(
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: Image.network(
+                                    controller.productLists[index].images[0].src!,
+                                  fit: BoxFit.cover,
+                                )
+                              ),
+                              Expanded(
+                                  flex: 2,
+                                  child: Column(
+                                    children: [
+
+                                    ],
+                                  )
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }),
+              ),
+            ),
+
+
           ],
         ),
       ),
     );
   }
-
-
-
-
-
-
-
 }
