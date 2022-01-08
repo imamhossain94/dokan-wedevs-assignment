@@ -110,7 +110,6 @@ class HomeTab extends StatelessWidget {
                                       height: 30,
                                     ),
                                     CustomFilterItemList(
-                                      title: "Newest",
                                       onValueChanged: (value) {
                                           homeTabController.filterMethod = value;
                                       },

@@ -1,12 +1,11 @@
+import 'package:dokan_wedevs_assignment/services/get_storage_service.dart';
 import 'package:dokan_wedevs_assignment/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomFilterItemList extends StatefulWidget {
   final ValueChanged<String> onValueChanged;
-  final String title;
-
   const CustomFilterItemList(
-      {Key? key, required this.onValueChanged, required this.title})
+      {Key? key, required this.onValueChanged})
       : super(key: key);
 
   @override
@@ -16,6 +15,12 @@ class CustomFilterItemList extends StatefulWidget {
 class _CustomFilterItemListState extends State<CustomFilterItemList> {
 
   int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = filterList.indexOf(getCheckedFilter());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +36,7 @@ class _CustomFilterItemListState extends State<CustomFilterItemList> {
                   setState(() {
                     selectedIndex = value;
                   });
+                  setCheckedFilter(filterList[value]);
                   widget.onValueChanged(filterList[value]);
               }
           );

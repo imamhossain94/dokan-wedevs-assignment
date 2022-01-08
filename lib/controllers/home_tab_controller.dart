@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dokan_wedevs_assignment/models/products.dart';
+import 'package:dokan_wedevs_assignment/services/get_storage_service.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +14,7 @@ class HomeTabController extends GetxController {
   void onInit() {
     super.onInit();
     readJsonData();
+    filterMethod = getCheckedFilter();
   }
 
   Future<void> readJsonData() async {
@@ -24,9 +26,9 @@ class HomeTabController extends GetxController {
     for (dynamic item in dataList) {
       productLists.value.add(Product.fromJson(item));
     }
+    filterProduct();
   }
-
-
+  
   void filterProduct() {
     switch (filterMethod) {
       case "Newest":

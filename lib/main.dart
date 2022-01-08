@@ -1,6 +1,7 @@
 import 'package:dokan_wedevs_assignment/views/signin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'services/theme_service.dart';
 import 'utils/themes.dart';
@@ -8,7 +9,9 @@ import 'utils/themes_mode.dart';
 import 'views/main_page.dart';
 import 'views/signup_page.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
