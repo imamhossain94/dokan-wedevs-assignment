@@ -21,6 +21,7 @@ class SignInPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
+                width: 200,
                   height: 200, child: Image.asset("assets/resources/logo.png")),
               const Text(
                 "Sign In",

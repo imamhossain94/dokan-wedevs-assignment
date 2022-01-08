@@ -1,4 +1,5 @@
 import 'package:dokan_wedevs_assignment/controllers/profile_tab_controller.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -32,10 +33,81 @@ class ProfileTab extends StatelessWidget {
             )
           ]),
         ),
-        body: Column(
-          children: [
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
 
-          ],
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: DottedBorder(
+                    borderType: BorderType.Circle,
+                    radius: const Radius.circular(70),
+                    padding: const EdgeInsets.all(6),
+                    color: const Color(0xFFFFADAD),
+                    dashPattern: const [6, 3],
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(70)),
+                      child: Container(
+                        height: 140,
+                        width: 140,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/resources/profile.png")
+
+                          )
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              const Text(
+                "John Smith",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 26,
+                    fontFamily: "Roboto",
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.bold),
+              ),
+
+              const Text(
+                "info@johnsmith.com",
+                style: TextStyle(
+                    color: Color(0xFF535353),
+                    fontSize: 26,
+                    fontFamily: "Lato",
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.normal),
+              ),
+
+              Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                    ],
+                  ),
+                ),
+              )
+
+
+
+
+
+
+
+            ],
+          ),
         ),
       ),
     );
