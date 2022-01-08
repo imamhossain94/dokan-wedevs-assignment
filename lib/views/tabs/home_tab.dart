@@ -23,7 +23,7 @@ class HomeTab extends StatelessWidget {
               title: const Text(
                 "Product List",
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xFF222455),
                     fontSize: 26,
                     fontFamily: "Roboto",
                     fontStyle: FontStyle.normal,

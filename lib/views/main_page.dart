@@ -91,7 +91,7 @@ class MainPage extends StatelessWidget {
       HomeTab(),
       const MenuTab(),
       const CartTab(),
-      const ProfileTab(),
+      ProfileTab(),
       const SearchTab(),
     ];
     return Obx(() => IndexedStack(

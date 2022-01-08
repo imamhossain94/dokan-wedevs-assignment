@@ -2,7 +2,7 @@
     package="com.example.dokan_wedevs_assignment">
    <application
         android:label="dokan_wedevs_assignment"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
