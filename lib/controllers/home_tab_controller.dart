@@ -28,7 +28,7 @@ class HomeTabController extends GetxController {
     }
     filterProduct();
   }
-  
+
   void filterProduct() {
     switch (filterMethod) {
       case "Newest":
