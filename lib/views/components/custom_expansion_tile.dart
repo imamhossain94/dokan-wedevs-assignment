@@ -47,6 +47,7 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.normal),
       ),
+      expandedCrossAxisAlignment: CrossAxisAlignment.start,
       children: widget.children,
     );
   }

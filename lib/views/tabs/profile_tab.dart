@@ -1,7 +1,7 @@
 import 'package:dokan_wedevs_assignment/controllers/profile_tab_controller.dart';
 import 'package:dokan_wedevs_assignment/views/components/custom_expansion_tile.dart';
+import 'package:dokan_wedevs_assignment/views/components/custom_form_field.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -94,34 +94,120 @@ class ProfileTab extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
 
                         CustomExpansionTile(
                           title: "Account",
                           icon: FontAwesomeIcons.solidUser,
                           children: [
-                            ListTile(
-                              title: Text('Ios'),
+
+                            CustomFormField(
+                              title: "Email",
+                              hint: "youremail@xmail.com",
+                              controller: TextEditingController(),
                             ),
-                            ListTile(
-                              title: Text('Ios'),
+
+                            CustomFormField(
+                              title: "Full Name",
+                              hint: "William Bennett",
+                              controller: TextEditingController(),
                             ),
-                            ListTile(
-                              title: Text('Ios'),
-                            )
+
+                            CustomFormField(
+                              title: "Street Address",
+                              hint: "465 Nolan Causeway Suite 079",
+                              controller: TextEditingController(),
+                            ),
+
+                            CustomFormField(
+                              title: "Apt, Suite, Bldg (optional)",
+                              hint: "Unit 512",
+                              controller: TextEditingController(),
+                            ),
+
+                            CustomFormField(
+                              title: "Zip Code",
+                              hint: "77017",
+                              controller: TextEditingController(),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                          side: const BorderSide(
+                                              width: 0.5,
+                                              color: Color(0xFFD2DBE0))),
+                                      elevation: 0,
+                                      child: SizedBox(
+                                          height: 50,
+                                          child: CupertinoButton(
+                                              onPressed: () {
+                                                Get.back();
+                                              },
+                                              padding: EdgeInsets.zero,
+                                              child: const Text(
+                                                "Cancel",
+                                                style: TextStyle(
+                                                    color:
+                                                    Color(0xFF818995),
+                                                    fontSize: 20,
+                                                    fontFamily: "Roboto",
+                                                    fontStyle:
+                                                    FontStyle.normal,
+                                                    fontWeight: FontWeight
+                                                        .normal),
+                                              ),
+                                              color: Colors.white)),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  Expanded(
+                                    child: SizedBox(
+                                        height: 50,
+                                        child: CupertinoButton(
+                                            onPressed: () {
+
+                                            },
+                                            padding: EdgeInsets.zero,
+                                            child: const Text(
+                                              "Save",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontFamily: "Lato",
+                                                  fontStyle:
+                                                  FontStyle.normal,
+                                                  fontWeight:
+                                                  FontWeight.normal),
+                                            ),
+                                            color:
+                                            const Color(0xFF1ABC9C))),
+                                  ),
+                                ],
+                              ),
+                            ),
+
                           ],
                         ),
-                        CustomExpansionTile(
+                        const CustomExpansionTile(
                           title: "Passwords",
                           icon: FontAwesomeIcons.lock,
                           children: []
                         ),
-                        CustomExpansionTile(
+                        const CustomExpansionTile(
                             title: "Notification",
                             icon: FontAwesomeIcons.solidBell,
                             children: []
                         ),
-                        CustomExpansionTile(
+                        const CustomExpansionTile(
                             title: "Wishlist",
                             icon: FontAwesomeIcons.solidHeart,
                             children: []
@@ -138,4 +224,6 @@ class ProfileTab extends StatelessWidget {
       ),
     );
   }
+
+
 }
