@@ -19,7 +19,10 @@ void setAuthToken(String value) async {
 
 
 User? getCurrentUser() {
-  return userFromJson(box.read("user_response"));
+  if(box.read("user_response") != null){
+    return userFromJson(box.read("user_response"));
+  }
+  return null;
 }
 
 void setUserResponse(dynamic value) {

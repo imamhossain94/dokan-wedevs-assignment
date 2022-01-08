@@ -24,24 +24,22 @@ class _CustomFilterItemListState extends State<CustomFilterItemList> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: ListView.builder(
-        itemCount: filterList.length,
-        itemBuilder: (context, index) {
-          return filterItem(
-              title: filterList[index],
-              value: selectedIndex == index?true:false,
-              onValueChanged: (value) {
-                  setState(() {
-                    selectedIndex = value;
-                  });
-                  setCheckedFilter(filterList[value]);
-                  widget.onValueChanged(filterList[value]);
-              }
-          );
-        },
-      ),
+    return ListView.builder(
+      itemCount: filterList.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return filterItem(
+            title: filterList[index],
+            value: selectedIndex == index?true:false,
+            onValueChanged: (value) {
+                setState(() {
+                  selectedIndex = value;
+                });
+                setCheckedFilter(filterList[value]);
+                widget.onValueChanged(filterList[value]);
+            }
+        );
+      },
     );
   }
 

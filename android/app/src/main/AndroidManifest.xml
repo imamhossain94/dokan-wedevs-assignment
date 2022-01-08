@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dokan_wedevs_assignment">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="Dokan WeDevs"
         android:icon="@drawable/ic_launcher"

@@ -101,14 +101,14 @@ class _SignInPageState extends State<SignInPage> {
 
                           if (error != null) {
                             Get.back();
-                            Get.defaultDialog(title: "Oop!", middleText: "Email/Password may incorrect!");
+                            Get.defaultDialog(title: "Oops!", middleText: "Email/Password may incorrect!");
                           } else {
                             Get.back();
                             Get.offAll(MainPage());
                           }
                         }else{
                           Get.back();
-                          Get.defaultDialog(title: "Oop!", middleText: "Check Information");
+                          Get.defaultDialog(title: "Oops!", middleText: "Check Information");
                         }
 
                       },
