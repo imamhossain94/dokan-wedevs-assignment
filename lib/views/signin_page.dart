@@ -1,4 +1,5 @@
 import 'package:dokan_wedevs_assignment/controllers/signin_controller.dart';
+import 'package:dokan_wedevs_assignment/services/get_storage_service.dart';
 import 'package:dokan_wedevs_assignment/utils/extension.dart';
 import 'package:dokan_wedevs_assignment/views/main_page.dart';
 import 'package:dokan_wedevs_assignment/views/signup_page.dart';
@@ -88,10 +89,9 @@ class _SignInPageState extends State<SignInPage> {
 
                         showLoaderDialog(context);
 
-
                         String email = emailController.text;
                         String password = passwordController.text;
-                        bool emailValid = email.isNotEmpty?true:false; //RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+                        bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
                         bool passValid = password.isNotEmpty?true:false;
 
                         if(emailValid && passValid) {
@@ -107,6 +107,7 @@ class _SignInPageState extends State<SignInPage> {
                             Get.offAll(MainPage());
                           }
                         }else{
+                          Get.back();
                           Get.defaultDialog(title: "Oop!", middleText: "Check Information");
                         }
 

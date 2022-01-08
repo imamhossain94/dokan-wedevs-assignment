@@ -34,7 +34,7 @@ class CustomFormField extends StatelessWidget {
           SizedBox(
             width: title == "Zip Code"?100:null,
             child: TextField(
-
+              controller: controller,
               autocorrect: true,
               decoration: InputDecoration(
                 hintText: hint,

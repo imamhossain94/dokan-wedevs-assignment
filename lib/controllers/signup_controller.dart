@@ -27,4 +27,5 @@ class SignUpController extends GetxController {
     }
     return error;
   }
+
 }

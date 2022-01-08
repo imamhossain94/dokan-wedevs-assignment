@@ -1,4 +1,5 @@
 import 'package:dokan_wedevs_assignment/controllers/profile_tab_controller.dart';
+import 'package:dokan_wedevs_assignment/utils/extension.dart';
 import 'package:dokan_wedevs_assignment/views/components/custom_expansion_tile.dart';
 import 'package:dokan_wedevs_assignment/views/components/custom_form_field.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -8,13 +9,19 @@ import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-class ProfileTab extends StatelessWidget {
-  ProfileTab({Key? key}) : super(key: key);
+class ProfileTab extends StatefulWidget {
+  const ProfileTab({Key? key}) : super(key: key);
 
+  @override
+  State<ProfileTab> createState() => _ProfileTabState();
+}
+
+class _ProfileTabState extends State<ProfileTab> {
   final profileTabController = Get.put(ProfileTabController());
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -51,38 +58,45 @@ class ProfileTab extends StatelessWidget {
                     dashPattern: const [6, 3],
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(70)),
-                      child: Container(
-                        height: 140,
-                        width: 140,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/resources/profile.png")
-
-                          )
-                        ),
-                      ),
+                      child: Obx(() => Container(
+                            height: 140,
+                            width: 140,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: profileTabController.currentUser
+                                                .value.id !=
+                                            null
+                                        ? NetworkImage(profileTabController
+                                            .currentUser
+                                            .value
+                                            .avatarUrls!["96"]!)
+                                        : const AssetImage("assets/resources/profile.png") as ImageProvider,
+                                    fit: BoxFit.fill)),
+                          )),
                     ),
                   ),
                 ),
               ),
-              const Text(
-                "John Smith",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 26,
-                    fontFamily: "Roboto",
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.bold),
+              Obx(
+                () => Text(
+                  profileTabController.currentUser.value.name??"",
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 26,
+                      fontFamily: "Roboto",
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-              const Text(
-                "info@johnsmith.com",
-                style: TextStyle(
-                    color: Color(0xFF535353),
-                    fontSize: 26,
-                    fontFamily: "Lato",
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.normal),
-              ),
+              Obx(() => Text(
+                    profileTabController.currentUser.value.email??"",
+                    style: const TextStyle(
+                        color: Color(0xFF535353),
+                        fontSize: 26,
+                        fontFamily: "Lato",
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.normal),
+                  )),
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Card(
@@ -95,51 +109,45 @@ class ProfileTab extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         CustomExpansionTile(
                           title: "Account",
                           icon: FontAwesomeIcons.solidUser,
                           children: [
-
                             CustomFormField(
                               title: "Email",
                               hint: "youremail@xmail.com",
-                              controller: TextEditingController(),
+                              controller: profileTabController.emailController.value,
                             ),
-
                             CustomFormField(
                               title: "Full Name",
                               hint: "William Bennett",
-                              controller: TextEditingController(),
+                              controller: profileTabController.fullNameController.value,
                             ),
-
                             CustomFormField(
                               title: "Street Address",
                               hint: "465 Nolan Causeway Suite 079",
-                              controller: TextEditingController(),
+                              controller: profileTabController.streetAddressController.value,
                             ),
-
                             CustomFormField(
                               title: "Apt, Suite, Bldg (optional)",
                               hint: "Unit 512",
-                              controller: TextEditingController(),
+                              controller: profileTabController.aptSuiteBldgController.value,
                             ),
-
                             CustomFormField(
                               title: "Zip Code",
                               hint: "77017",
-                              controller: TextEditingController(),
+                              controller: profileTabController.zipCodeController.value,
                             ),
-
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 30, horizontal: 15),
                               child: Row(
                                 children: [
                                   Expanded(
                                     child: Card(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(10),
+                                              BorderRadius.circular(10),
                                           side: const BorderSide(
                                               width: 0.5,
                                               color: Color(0xFFD2DBE0))),
@@ -154,14 +162,12 @@ class ProfileTab extends StatelessWidget {
                                               child: const Text(
                                                 "Cancel",
                                                 style: TextStyle(
-                                                    color:
-                                                    Color(0xFF818995),
+                                                    color: Color(0xFF818995),
                                                     fontSize: 20,
                                                     fontFamily: "Roboto",
-                                                    fontStyle:
-                                                    FontStyle.normal,
-                                                    fontWeight: FontWeight
-                                                        .normal),
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight:
+                                                        FontWeight.normal),
                                               ),
                                               color: Colors.white)),
                                     ),
@@ -173,7 +179,18 @@ class ProfileTab extends StatelessWidget {
                                     child: SizedBox(
                                         height: 50,
                                         child: CupertinoButton(
-                                            onPressed: () {
+                                            onPressed: () async{
+
+                                              showLoaderDialog(context);
+
+                                              String? error = await profileTabController.updateProfile();
+
+                                              if (error != null) {
+                                                Get.back();
+                                                Get.defaultDialog(title: "Oop!", middleText: "Failed to Update!!");
+                                              } else {
+                                                Get.back();
+                                              }
 
                                             },
                                             padding: EdgeInsets.zero,
@@ -183,47 +200,38 @@ class ProfileTab extends StatelessWidget {
                                                   color: Colors.white,
                                                   fontSize: 20,
                                                   fontFamily: "Lato",
-                                                  fontStyle:
-                                                  FontStyle.normal,
+                                                  fontStyle: FontStyle.normal,
                                                   fontWeight:
-                                                  FontWeight.normal),
+                                                      FontWeight.normal),
                                             ),
-                                            color:
-                                            const Color(0xFF1ABC9C))),
+                                            color: const Color(0xFF1ABC9C))),
                                   ),
                                 ],
                               ),
                             ),
-
                           ],
                         ),
                         const CustomExpansionTile(
-                          title: "Passwords",
-                          icon: FontAwesomeIcons.lock,
-                          children: []
-                        ),
+                            title: "Passwords",
+                            icon: FontAwesomeIcons.lock,
+                            children: []),
                         const CustomExpansionTile(
                             title: "Notification",
                             icon: FontAwesomeIcons.solidBell,
-                            children: []
-                        ),
+                            children: []),
                         const CustomExpansionTile(
                             title: "Wishlist",
                             icon: FontAwesomeIcons.solidHeart,
-                            children: []
-                        ),
+                            children: []),
                       ],
                     ),
                   ),
                 ),
               ),
-
             ],
           ),
         ),
       ),
     );
   }
-
-
 }

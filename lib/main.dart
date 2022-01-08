@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'services/get_storage_service.dart';
 import 'services/theme_service.dart';
 import 'utils/themes.dart';
 import 'utils/themes_mode.dart';
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
       darkTheme: Themes.dark,
       themeMode: ThemeService().theme,
       debugShowCheckedModeBanner: false,
-      home: SignInPage(),
+      home: getCurrentUser() != null?MainPage():const SignInPage(),
     );
   }
+
 }
