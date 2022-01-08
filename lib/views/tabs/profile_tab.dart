@@ -1,8 +1,11 @@
 import 'package:dokan_wedevs_assignment/controllers/profile_tab_controller.dart';
+import 'package:dokan_wedevs_assignment/views/components/custom_expansion_tile.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class ProfileTab extends StatelessWidget {
@@ -37,7 +40,6 @@ class ProfileTab extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 30),
@@ -63,7 +65,6 @@ class ProfileTab extends StatelessWidget {
                   ),
                 ),
               ),
-
               const Text(
                 "John Smith",
                 style: TextStyle(
@@ -73,7 +74,6 @@ class ProfileTab extends StatelessWidget {
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold),
               ),
-
               const Text(
                 "info@johnsmith.com",
                 style: TextStyle(
@@ -83,28 +83,54 @@ class ProfileTab extends StatelessWidget {
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.normal),
               ),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Card(
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
 
-              Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-
-                    ],
+                        CustomExpansionTile(
+                          title: "Account",
+                          icon: FontAwesomeIcons.solidUser,
+                          children: [
+                            ListTile(
+                              title: Text('Ios'),
+                            ),
+                            ListTile(
+                              title: Text('Ios'),
+                            ),
+                            ListTile(
+                              title: Text('Ios'),
+                            )
+                          ],
+                        ),
+                        CustomExpansionTile(
+                          title: "Passwords",
+                          icon: FontAwesomeIcons.lock,
+                          children: []
+                        ),
+                        CustomExpansionTile(
+                            title: "Notification",
+                            icon: FontAwesomeIcons.solidBell,
+                            children: []
+                        ),
+                        CustomExpansionTile(
+                            title: "Wishlist",
+                            icon: FontAwesomeIcons.solidHeart,
+                            children: []
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              )
-
-
-
-
-
-
+              ),
 
             ],
           ),
