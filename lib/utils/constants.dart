@@ -32,3 +32,8 @@ const appBarColorDark = Color(0xFF1D1C29);
 
 const primaryColorLight = Color(0xFF5374FF);
 const primaryColorDark = Colors.redAccent;
+
+
+List<String> filterList = [
+  "Newest", "Oldest", "Price low > High", "Price high > Low", "Best selling"
+];

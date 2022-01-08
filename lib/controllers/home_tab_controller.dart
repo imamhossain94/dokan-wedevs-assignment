@@ -5,8 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class HomeTabController extends GetxController {
+  var productLists = RxList<Product>().obs;
 
-  var productLists = RxList<Product>();
+  var filterMethod = "Newest";
 
   @override
   void onInit() {
@@ -14,20 +15,43 @@ class HomeTabController extends GetxController {
     readJsonData();
   }
 
-
   Future<void> readJsonData() async {
-    final String response = await rootBundle.loadString('assets/data/response.json');
+    final String response =
+        await rootBundle.loadString('assets/data/response.json');
     final dataJson = await json.decode(response);
 
     List<dynamic> dataList = dataJson != null ? List.from(dataJson) : [];
+    for (dynamic item in dataList) {
+      productLists.value.add(Product.fromJson(item));
+    }
+  }
 
-    List<Product> product = [];
 
-    for(dynamic item in dataList){
-      product.add(Product.fromJson(item));
+  void filterProduct() {
+    switch (filterMethod) {
+      case "Newest":
+        // big > small
+        productLists.value.sort((a, b) => b.dateModified!.compareTo(a.dateModified!));
+        break;
+      case "Oldest":
+        // small > big
+        productLists.value.sort((a, b) => a.dateModified!.compareTo(b.dateModified!));
+        break;
+      case "Price low > High":
+        productLists.value.sort((a, b) => a.price!.compareTo(b.price!));
+        break;
+      case "Price high > Low":
+        productLists.value.sort((a, b) => b.price!.compareTo(a.price!));
+        break;
+      case "Best selling":
+        productLists.value.sort((a, b) => b.totalSales!.compareTo(a.totalSales!));
+        break;
     }
 
-    productLists.value = product;
+    for(var x in productLists.value) {
+      print(x.totalSales);
+    }
+
   }
 
 

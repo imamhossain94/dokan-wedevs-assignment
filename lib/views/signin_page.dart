@@ -80,7 +80,8 @@ class SignInPage extends StatelessWidget {
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.normal),
                       ),
-                      color: const Color(0xFFF75F55))),
+                      color: const Color(0xFFF75F55))
+              ),
               const SizedBox(
                 height: 40,
               ),

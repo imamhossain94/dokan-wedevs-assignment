@@ -11,6 +11,10 @@ class Product {
   final bool? featured;
   final String? catalogVisibility;
   final String? description;
+  final String? dateCreated;
+  final String? dateCreatedGmt;
+  final String? dateModified;
+  final String? dateModifiedGmt;
   final String? shortDescription;
   final String? sku;
   final String? price;
@@ -70,6 +74,10 @@ class Product {
       this.featured,
       this.catalogVisibility,
       this.description,
+      this.dateCreated,
+      this.dateCreatedGmt,
+      this.dateModified,
+      this.dateModifiedGmt,
       this.shortDescription,
       this.sku,
       this.price,
@@ -129,6 +137,10 @@ class Product {
         featured = json['featured'],
         catalogVisibility = json['catalog_visibility'],
         description = json['description'],
+        dateCreated = json['date_created'],
+        dateCreatedGmt = json['date_created_gmt'],
+        dateModified = json['date_modified'],
+        dateModifiedGmt = json['date_modified_gmt'],
         shortDescription = json['short_description'],
         sku = json['sku'],
         price = json['price'],

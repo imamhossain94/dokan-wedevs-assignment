@@ -1,5 +1,6 @@
 import 'package:dokan_wedevs_assignment/views/signin_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'services/theme_service.dart';
 import 'utils/themes.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
 
     ThemesMode().init(context);
 
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Dokan',
       theme: Themes.light,
       darkTheme: Themes.dark,
