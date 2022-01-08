@@ -1,8 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dokan_wedevs_assignment">
    <application
-        android:label="dokan_wedevs_assignment"
-        android:icon="@drawable/ic_launcher">
+        android:label="Dokan WeDevs"
+        android:icon="@drawable/ic_launcher"
+        android:roundIcon="@drawable/ic_launcher_round">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

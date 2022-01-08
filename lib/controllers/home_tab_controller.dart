@@ -49,11 +49,6 @@ class HomeTabController extends GetxController {
         productLists.value.sort((a, b) => b.totalSales!.compareTo(a.totalSales!));
         break;
     }
-
-    for(var x in productLists.value) {
-      print(x.totalSales);
-    }
-
   }
 
 
