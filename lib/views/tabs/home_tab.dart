@@ -1,5 +1,6 @@
 import 'package:dokan_wedevs_assignment/controllers/home_tab_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
@@ -141,6 +142,7 @@ class HomeTab extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Expanded(
                                 flex: 3,
@@ -151,10 +153,61 @@ class HomeTab extends StatelessWidget {
                               ),
                               Expanded(
                                   flex: 2,
-                                  child: Column(
-                                    children: [
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            controller.productLists[index].name!,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18,
+                                              fontFamily: "Roboto",
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.normal),
+                                        ),
+                                        // Html(
+                                        //     data: controller.productLists[index].priceHtml!
+                                        // ),
+                                        const SizedBox(height: 30,),
 
-                                    ],
+                                        Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                  text: "\$${controller.productLists[index].regularPrice}",
+                                                style: const TextStyle(
+                                                    color: Color(0xFF989FA8),
+                                                    decoration: TextDecoration.lineThrough,
+                                                    fontSize: 18,
+                                                    fontFamily: "Lato",
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.normal),
+                                              ),
+                                              WidgetSpan(
+                                                  child: Container(
+                                                    padding: const EdgeInsets.all(8.0),
+                                                    child: Text(
+                                                      "\$${controller.productLists[index].price}",
+                                                      style: const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 20,
+                                                          fontFamily: "Roboto",
+                                                          fontStyle: FontStyle.normal,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  )
+                                              )
+
+                                            ],
+                                          ),
+                                        )
+
+                                      ],
+                                    ),
                                   )
                               ),
                             ],
