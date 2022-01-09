@@ -59,6 +59,176 @@ flutter run
 Email: john@doe.com
 Pass: demo
 
+
+SignIn Request:
+Endpoint: [POST] https://apptest.dokandemo.com/wp-json/jwt-auth/v1/token
+Content-Type: application/json
+Body:
+```json
+{
+	"username": "john@doe.com",
+	"password": "demo"
+}
+```
+SignIn Response:
+```json
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbmV3YWdlZGV2cy5jb20iLCJpYXQiOjE2NDE3MTgxODgsIm5iZiI6MTY0MTcxODE4OCwiZXhwIjoxNjQyMzIyOTg4LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI0In19fQ.GbEOWBOtRpSO8dcSvdyM35FQNCee3MFB_YeMlVmTZ0w",
+    "user_email": "john@doe.com",
+    "user_nicename": "john",
+    "user_display_name": "John Doe"
+}
+```
+
+## SignUp Example 
+
+Username: john
+Email: john@doe.com
+Pass: demo
+
+
+SignUp Request:
+Endpoint: [POST] https://newagedevs.com/wp-json/wp/v2/users/register
+Content-Type: application/json
+Body:
+```json
+{
+  "username": "john",
+  "email": "john@doe.com",
+  "password": "demo"
+}
+```
+SignUp Response:
+```json
+{
+    "code": 200,
+    "message": "User 'john' Registration was Successful"
+}
+```
+
+## Get User Information Example
+Bearer Token: ??
+
+
+User Info Request:
+Endpoint: [POST/GET] https://newagedevs.com/wp-json/wp/v2/users/me
+Content-Type: application/json
+Authorization: 'Bearer Token'
+
+
+User Info Response:
+```json
+{
+    "id": 4,
+    "username": "john",
+    "name": "John Doe",
+    "first_name": "",
+    "last_name": "",
+    "email": "john@doe.com",
+    "url": "",
+    "description": "",
+    "link": "https://newagedevs.com/author/john/",
+    "locale": "en_US",
+    "nickname": "john",
+    "slug": "john",
+    "roles": [
+        "subscriber"
+    ],
+    "registered_date": "2022-01-07T15:21:13+00:00",
+    "capabilities": {
+        "read": true,
+        "level_0": true,
+        "subscriber": true
+    },
+    "extra_capabilities": {
+        "subscriber": true
+    },
+    "avatar_urls": {
+        "24": "https://secure.gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee?s=24&d=mm&r=g",
+        "48": "https://secure.gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee?s=48&d=mm&r=g",
+        "96": "https://secure.gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee?s=96&d=mm&r=g"
+    },
+    "meta": [],
+    "_links": {
+        "self": [
+            {
+                "href": "https://newagedevs.com/wp-json/wp/v2/users/4"
+            }
+        ],
+        "collection": [
+            {
+                "href": "https://newagedevs.com/wp-json/wp/v2/users"
+            }
+        ]
+    }
+}
+```
+
+## Update User Information Example
+Bearer Token: ??
+
+
+User Info Request:
+Endpoint: [POST] https://newagedevs.com/wp-json/wp/v2/users/<id>
+Content-Type: application/json
+Authorization: 'Bearer Token'
+Body:
+```json
+{
+  "name": "Joohn",
+  "email": "joohn@doe.com"
+}
+```
+
+User Info Response:
+```json
+{
+    "id": 4,
+    "username": "joohn",
+    "name": "Joohn Doe",
+    "first_name": "",
+    "last_name": "",
+    "email": "joohn@doe.com",
+    "url": "",
+    "description": "",
+    "link": "https://newagedevs.com/author/joohn/",
+    "locale": "en_US",
+    "nickname": "joohn",
+    "slug": "joohn",
+    "roles": [
+        "subscriber"
+    ],
+    "registered_date": "2022-01-07T15:21:13+00:00",
+    "capabilities": {
+        "read": true,
+        "level_0": true,
+        "subscriber": true
+    },
+    "extra_capabilities": {
+        "subscriber": true
+    },
+    "avatar_urls": {
+        "24": "https://secure.gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee?s=24&d=mm&r=g",
+        "48": "https://secure.gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee?s=48&d=mm&r=g",
+        "96": "https://secure.gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee?s=96&d=mm&r=g"
+    },
+    "meta": [],
+    "_links": {
+        "self": [
+            {
+                "href": "https://newagedevs.com/wp-json/wp/v2/users/4"
+            }
+        ],
+        "collection": [
+            {
+                "href": "https://newagedevs.com/wp-json/wp/v2/users"
+            }
+        ]
+    }
+}
+```
+
+
 ## How to connect WordPress
 
 Navigate to: lib -> utils -> constants.dart
@@ -83,13 +253,40 @@ const baseURL = "https://newagedevs.com/wp-json";
 
 </p>
 
+
+
+## Note
+The Apis provided by weDevs are not working and I mailed them about that issue on 8 January 2022 but no one replies. So, I use my own WordPress Apis. Don't be confused Thank you!!
+
+SignUp Request:
+Endpoint: [POST] https://apptest.dokandemo.com/wp-json/wp/v2/users/register
+Content-Type: application/json
+Body:
+```json
+{
+  "username": "test",
+  "email": "test@xmail.com",
+  "password": "test"
+}
+```
+SignUp Response:
+{
+    "code": "wp_die",
+    "message": "<h1>Error establishing a database connection</h1>",
+    "data": {
+        "status": 500
+    },
+    "additional_errors": []
+}
+```
+
 ## 🧑 Author
 
 #### Md. Imam Hossain
 
 You can also follow my GitHub Profile to stay updated about my latest projects:
 
-[![GitHub Follow](https://img.shields.io/badge/Connect-Hamza-blue.svg?logo=Github&longCache=true&style=social&label=Follow)](https://github.com/imamhossain94)
+[![GitHub Follow](https://img.shields.io/badge/Connect-Imam-blue.svg?logo=Github&longCache=true&style=social&label=Follow)](https://github.com/imamhossain94)
 
 If you liked the repo then kindly support it by giving it a star ⭐!
 
