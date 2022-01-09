@@ -187,7 +187,7 @@ class _ProfileTabState extends State<ProfileTab> {
 
                                               if (error != null) {
                                                 Get.back();
-                                                Get.defaultDialog(title: "Oop!", middleText: "Failed to Update!!");
+                                                Get.defaultDialog(title: "Oops!", middleText: "Failed to Update!!");
                                               } else {
                                                 Get.back();
                                               }
