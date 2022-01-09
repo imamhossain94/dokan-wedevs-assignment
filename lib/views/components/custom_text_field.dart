@@ -35,6 +35,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
+      padding: EdgeInsets.only(left: 1.w, right: 1.w),
       margin: EdgeInsets.symmetric(vertical: 1.2.h, horizontal: 8.w),
       height: 7.h,
       decoration: BoxDecoration(
@@ -58,6 +59,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           border: InputBorder.none,
+          contentPadding: EdgeInsets.only(left: 1.w, right: 1.w),
           prefixIcon: IconButton(
             onPressed: () {},
             icon: Icon(

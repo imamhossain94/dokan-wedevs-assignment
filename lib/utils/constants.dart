@@ -12,6 +12,8 @@ const String appLink = 'https://play.google.com/store/apps/details?id=';
 const String storeLink = 'https://play.google.com/store/apps/developer?id=';
 const String privacyPolicyUrl = '';
 
+//Wordpress base url
+const baseURL = "https://newagedevs.com/wp-json";
 
 // Test ads unit id
 // const String idBanner = "ca-app-pub-3940256099942544/6300978111";

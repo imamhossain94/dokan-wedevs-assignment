@@ -4,15 +4,15 @@ import 'package:dokan_wedevs_assignment/models/signup.dart';
 import 'package:dokan_wedevs_assignment/models/signin.dart';
 import 'package:dokan_wedevs_assignment/models/user.dart';
 import 'package:dokan_wedevs_assignment/services/get_storage_service.dart';
+import 'package:dokan_wedevs_assignment/utils/constants.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteService {
   static var client = http.Client();
-  static const _baseURL = "https://newagedevs.com/wp-json";
 
   static Future<SignIn?> loginUser(
       {required String userName, required String password}) async {
-    var response = await client.post(Uri.parse('$_baseURL/jwt-auth/v1/token'),
+    var response = await client.post(Uri.parse('$baseURL/jwt-auth/v1/token'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -32,7 +32,7 @@ class RemoteService {
       {required String userName,
       required String email,
       required String password}) async {
-    var response = await client.post(Uri.parse('$_baseURL/wp/v2/users/register'),
+    var response = await client.post(Uri.parse('$baseURL/wp/v2/users/register'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -51,7 +51,7 @@ class RemoteService {
 
   static Future<User?> userDetails() async {
 
-    var response = await client.post(Uri.parse('$_baseURL/wp/v2/users/me'),
+    var response = await client.post(Uri.parse('$baseURL/wp/v2/users/me'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'Authorization': 'Bearer ${getAuthToken()}',
@@ -71,7 +71,7 @@ class RemoteService {
 
   static Future<User?> updateUser(int id, Map<String, String> data) async {
 
-    var response = await client.post(Uri.parse('$_baseURL/wp/v2/users/$id'),
+    var response = await client.post(Uri.parse('$baseURL/wp/v2/users/$id'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'Authorization': 'Bearer ${getAuthToken()}',
