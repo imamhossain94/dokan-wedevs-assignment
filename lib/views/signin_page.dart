@@ -1,5 +1,4 @@
 import 'package:dokan_wedevs_assignment/controllers/signin_controller.dart';
-import 'package:dokan_wedevs_assignment/services/get_storage_service.dart';
 import 'package:dokan_wedevs_assignment/utils/extension.dart';
 import 'package:dokan_wedevs_assignment/views/main_page.dart';
 import 'package:dokan_wedevs_assignment/views/signup_page.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 import 'components/custom_icon_button.dart';
 import 'components/custom_text_field.dart';
 
@@ -33,18 +33,18 @@ class _SignInPageState extends State<SignInPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: 200,
-                  height: 200, child: Image.asset("assets/resources/logo.png")),
-              const Text(
+                width: 45.w,
+                  height: 20.h, child: Image.asset("assets/resources/logo.png")),
+              Text(
                 "Sign In",
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20.sp,
                     fontFamily: "Roboto",
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal),
               ),
-              const SizedBox(
-                height: 30,
+              SizedBox(
+                height: 5.h,
               ),
               CustomTextField(
                 controller: emailController,
@@ -62,28 +62,27 @@ class _SignInPageState extends State<SignInPage> {
               ),
               Container(
                   alignment: Alignment.centerRight,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+                  margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 0),
                   child: TextButton(
                     onPressed: () async {
 
                     },
-                    child: const Text(
+                    child: Text(
                       "Forgot Password?",
                       style: TextStyle(
-                          color: Color(0xFFA4A9AF),
-                          fontSize: 18,
+                          color: const Color(0xFFA4A9AF),
+                          fontSize: 12.sp,
                           fontFamily: "Roboto",
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.normal),
                     ),
                   )),
-              const SizedBox(
-                height: 50,
+              SizedBox(
+                height: 5.h,
               ),
               SizedBox(
                   width: MediaQuery.of(context).size.width - 60,
-                  height: 60,
+                  height: 8.h,
                   child: CupertinoButton(
                       onPressed: () async {
 
@@ -112,37 +111,39 @@ class _SignInPageState extends State<SignInPage> {
                         }
 
                       },
-                      child: const Text(
+                      child: Text(
                         "Login",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 14.sp,
                             fontFamily: "Roboto",
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.normal),
                       ),
                       color: const Color(0xFFF75F55))
               ),
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: 5.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomIconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       FontAwesomeIcons.facebookF,
-                      color: Color(0xFF3B5998),
+                      color: const Color(0xFF3B5998),
+                      size: 14.sp,
                     ),
                     onPressed: () {},
                   ),
-                  const SizedBox(
-                    width: 15,
+                  SizedBox(
+                    width: 5.w,
                   ),
                   CustomIconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       FontAwesomeIcons.google,
-                      color: Color(0xFFF14336),
+                      color: const Color(0xFFF14336),
+                      size: 14.sp,
                     ),
                     onPressed: () {},
                   ),
@@ -155,11 +156,11 @@ class _SignInPageState extends State<SignInPage> {
                 onPressed: () {
                   Get.offAll(SignUpPage());
                 },
-                child: const Text(
+                child: Text(
                   "Create New Account",
                   style: TextStyle(
-                      color: Color(0xFF383C40),
-                      fontSize: 20,
+                      color: const Color(0xFF383C40),
+                      fontSize: 14.sp,
                       fontFamily: "Roboto",
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.normal),

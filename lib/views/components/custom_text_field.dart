@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sizer/sizer.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -7,14 +9,14 @@ class CustomTextField extends StatefulWidget {
   final String hint;
   final bool isPassword, eyeVisibility;
 
-  const CustomTextField({
-    Key? key,
-    required this.controller,
-    required this.icons,
-    required this.hint,
-    required this.isPassword,
-    required this.eyeVisibility
-  }) : super(key: key);
+  const CustomTextField(
+      {Key? key,
+      required this.controller,
+      required this.icons,
+      required this.hint,
+      required this.isPassword,
+      required this.eyeVisibility})
+      : super(key: key);
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -33,9 +35,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-      height: 60,
+      margin: EdgeInsets.symmetric(vertical: 1.8.h, horizontal: 8.w),
+      height: 8.h,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -53,33 +54,43 @@ class _CustomTextFieldState extends State<CustomTextField> {
         controller: widget.controller,
         textInputAction: TextInputAction.next,
         obscureText: passVisibility,
+        textAlign: TextAlign.left,
+        textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
-          isDense: true,
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(vertical: 15),
           prefixIcon: IconButton(
             onPressed: () {},
-            icon: Icon(widget.icons),
+            icon: Icon(
+              widget.icons,
+              size: 18.sp,
+            ),
             color: const Color(0xFF7C8592),
           ),
-          suffixIcon: widget.isPassword && widget.eyeVisibility?IconButton(
-            onPressed: () {
-              setState(() {
-                passVisibility = !passVisibility;
-              });
-            },
-            icon: Icon(passVisibility?FontAwesomeIcons.solidEye:FontAwesomeIcons.solidEyeSlash),
-            color: const Color(0xFF7C8592),
-          ):null,
+          suffixIcon: widget.isPassword && widget.eyeVisibility
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      passVisibility = !passVisibility;
+                    });
+                  },
+                  icon: Icon(
+                    passVisibility
+                        ? FontAwesomeIcons.solidEye
+                        : FontAwesomeIcons.solidEyeSlash,
+                    size: 18.sp,
+                  ),
+                  color: const Color(0xFF7C8592),
+                )
+              : null,
           hintText: widget.hint,
-          hintStyle: const TextStyle(
-              color: Color(0xFF7C8592),
-              fontSize: 20,
+          hintStyle: TextStyle(
+              color: const Color(0xFF7C8592),
+              fontSize: 14.sp,
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontStyle: FontStyle.normal),
         ),
-        style: const TextStyle(color: Colors.black),
+        style: TextStyle(color: Colors.black, fontSize: 14.sp),
       ),
     );
   }

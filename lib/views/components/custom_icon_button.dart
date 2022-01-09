@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class CustomIconButton extends StatelessWidget {
   final Icon icon;
@@ -19,8 +20,8 @@ class CustomIconButton extends StatelessWidget {
         splashColor: Colors.grey, // Splash color
         onTap: onPressed,
         child: SizedBox(
-            width: 60,
-            height: 60,
+            width: 15.w,
+            height: 15.w,
             child: icon
         ),
       ),
