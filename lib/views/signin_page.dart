@@ -80,9 +80,10 @@ class _SignInPageState extends State<SignInPage> {
               SizedBox(
                 height: 5.h,
               ),
-              SizedBox(
-                  width: MediaQuery.of(context).size.width - 60,
-                  height: 8.h,
+              Container(
+                  height: 7.h,
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(horizontal: 3.5.h, vertical: 0),
                   child: CupertinoButton(
                       onPressed: () async {
 
@@ -149,8 +150,8 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 50,
+              SizedBox(
+                height: 5.h,
               ),
               TextButton(
                 onPressed: () {

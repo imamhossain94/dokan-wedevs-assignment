@@ -20,8 +20,8 @@ class CustomIconButton extends StatelessWidget {
         splashColor: Colors.grey, // Splash color
         onTap: onPressed,
         child: SizedBox(
-            width: 15.w,
-            height: 15.w,
+            width: 7.h,
+            height: 7.h,
             child: icon
         ),
       ),
