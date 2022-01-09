@@ -15,6 +15,16 @@ weDevs Flutter assignment done with GetX & MVC pattern
 
 </div>
 
+
+## Assignment Link
+
+View assignment <a href="https://drive.google.com/file/d/1C9Oc8R0w_OTBBth04eDRpLo1DtHL8SY_/view?usp=sharing">PDF</a>
+
+## Design
+
+View design on <a href="https://www.figma.com/file/lHDVMCVsE6R3NWxxG6Wfbo/Demo?node-id=0%3A1">Figma</a>
+
+
 ## 📁 Download Now
 
 Get it from <a href="https://drive.google.com/file/d/11Vnc10UpDa6zx5l2Mt2FEMUIw-psG3KX/view?usp=sharing">Google drive</a>
