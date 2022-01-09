@@ -44,3 +44,43 @@ flutter run
   font_awesome_flutter: ^9.2.0
   cupertino_icons: ^1.0.2
 ```
+
+## SignIn Example 
+Email: john@doe.com
+Pass: demo
+
+## How to connect WordPress
+
+Navigate to: lib -> utils -> constants.dart
+Change base URL
+
+```dart
+//Wordpress base url
+const baseURL = "https://newagedevs.com/wp-json";
+```
+
+## Screenshots
+<p align="center">
+
+  <img alt="image" src="https://github.com/imamhossain94/dokan-wedevs-assignment/blob/main/sreenshots/login.jpg" width="40%"> &nbsp;&nbsp;
+  <img alt="image" src="https://github.com/imamhossain94/dokan-wedevs-assignment/blob/main/sreenshots/register.jpg" width="40%">
+  <br /><br /><br />
+  <img alt="image" src="https://github.com/imamhossain94/dokan-wedevs-assignment/blob/main/sreenshots/products.jpg" width="40%"> &nbsp;&nbsp;
+  <img alt="image" src="https://github.com/imamhossain94/dokan-wedevs-assignment/blob/main/sreenshots/filter.jpg" width="40%">
+  <br /><br /><br />
+  <img alt="image" src="https://github.com/imamhossain94/dokan-wedevs-assignment/blob/main/sreenshots/profile.jpg" width="40%"> &nbsp;&nbsp;
+  <img alt="image" src="https://github.com/imamhossain94/dokan-wedevs-assignment/blob/main/sreenshots/update_profile.jpg" width="40%">
+
+</p>
+
+## 🧑 Author
+
+#### Md. Imam Hossain
+
+You can also follow my GitHub Profile to stay updated about my latest projects:
+
+[![GitHub Follow](https://img.shields.io/badge/Connect-Hamza-blue.svg?logo=Github&longCache=true&style=social&label=Follow)](https://github.com/imamhossain94)
+
+If you liked the repo then kindly support it by giving it a star ⭐!
+
+Copyright (c) 2022 MD. IMAM HOSSAIN
