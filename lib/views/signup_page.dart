@@ -9,19 +9,23 @@ import 'package:sizer/sizer.dart';
 import 'components/custom_icon_button.dart';
 import 'components/custom_text_field.dart';
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
   final signUpController = Get.put(SignUpController());
 
-
   var nameController = TextEditingController();
+
   var emailController = TextEditingController();
+
   var passwordController = TextEditingController();
+
   var confirmPasswordController = TextEditingController();
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -214,5 +218,4 @@ class SignUpPage extends StatelessWidget {
       ),
     );
   }
-
 }

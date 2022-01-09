@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 class HomeTab extends StatelessWidget {
   HomeTab({Key? key}) : super(key: key);
@@ -17,14 +18,14 @@ class HomeTab extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(100.0),
+          preferredSize: Size.fromHeight(10.h),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             AppBar(
-              title: const Text(
+              title: Text(
                 "Product List",
                 style: TextStyle(
-                    color: Color(0xFF222455),
-                    fontSize: 26,
+                    color: const Color(0xFF222455),
+                    fontSize: 18.sp,
                     fontFamily: "Roboto",
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold),
@@ -36,9 +37,10 @@ class HomeTab extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 15),
                   child: IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       FontAwesomeIcons.search,
                       color: Colors.black,
+                      size: 16.sp,
                     ),
                     onPressed: () {},
                   ),
@@ -51,9 +53,9 @@ class HomeTab extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.center,
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-              height: 60,
+              padding: EdgeInsets.symmetric(horizontal: 2.w),
+              margin: EdgeInsets.symmetric(vertical: 1.h, horizontal: 7.w),
+              height: 7.h,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -69,8 +71,6 @@ class HomeTab extends StatelessWidget {
                 children: [
                   TextButton.icon(
                       onPressed: () {
-
-
 
                         Get.bottomSheet(
                           Container(
@@ -196,19 +196,17 @@ class HomeTab extends StatelessWidget {
                           enableDrag: true,
                         );
 
-
-
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         FontAwesomeIcons.filter,
-                        size: 20,
-                        color: Color(0xFFB6BED4),
+                        size: 14.sp,
+                        color: const Color(0xFFB6BED4),
                       ),
-                      label: const Text(
+                      label: Text(
                         "Filters",
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 20,
+                            fontSize: 14.sp,
                             fontFamily: "Lato",
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.normal),
@@ -216,10 +214,10 @@ class HomeTab extends StatelessWidget {
                   const Spacer(),
                   DropdownButton<String>(
                       value: "Sort by",
-                      icon: const Icon(
+                      icon: Icon(
                         FontAwesomeIcons.caretDown,
-                        size: 28,
-                        color: Color(0xFFB6BED4),
+                        size: 20.sp,
+                        color: const Color(0xFFB6BED4),
                       ),
                       //iconSize: 42,
                       underline: const SizedBox(),
@@ -231,9 +229,9 @@ class HomeTab extends StatelessWidget {
                           value: value,
                           child: Text(
                             value,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 20,
+                                fontSize: 14.sp,
                                 fontFamily: "Lato",
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.normal),
@@ -241,33 +239,31 @@ class HomeTab extends StatelessWidget {
                         );
                       }).toList()),
                   IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       FontAwesomeIcons.tasks,
                       color: Colors.black,
-                      size: 24,
+                      size: 14.sp,
                     ),
                     onPressed: () {},
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 2.h,
             ),
             Expanded(
-              //height: 500,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 6.w),
                 child: GetX<HomeTabController>(builder: (controller) {
                   return GridView.builder(
                     itemCount: controller.productLists.value.length,
                     physics: const BouncingScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: (1 / 1.726),
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 3.w,
+                      mainAxisSpacing: 3.w,
                     ),
                     itemBuilder: (context, index) {
                       return Card(
@@ -287,23 +283,22 @@ class HomeTab extends StatelessWidget {
                                         .images[0].src!,
                                     fit: BoxFit.cover,
                                   )),
+                              const Divider(height: 0,),
                               Expanded(
                                   flex: 2,
                                   child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        20, 10, 10, 10),
+                                    padding: EdgeInsets.fromLTRB(3.w, 1.h, 2.w, 1.h),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          controller
-                                              .productLists.value[index].name!,
-                                          maxLines: 2,
+                                          controller.productLists.value[index].name!,
+                                          maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 18,
+                                              fontSize: 14.sp,
                                               fontFamily: "Roboto",
                                               fontStyle: FontStyle.normal,
                                               fontWeight: FontWeight.normal),
@@ -311,21 +306,20 @@ class HomeTab extends StatelessWidget {
                                         // Html(
                                         //     data: controller.productLists[index].priceHtml!
                                         // ),
-                                        const SizedBox(
-                                          height: 20,
+                                        SizedBox(
+                                          height: 2.h,
                                         ),
-
                                         Text.rich(
                                           TextSpan(
                                             children: [
                                               TextSpan(
                                                 text:
                                                     "\$${controller.productLists.value[index].regularPrice}",
-                                                style: const TextStyle(
-                                                    color: Color(0xFF989FA8),
+                                                style: TextStyle(
+                                                    color: const Color(0xFF989FA8),
                                                     decoration: TextDecoration
                                                         .lineThrough,
-                                                    fontSize: 18,
+                                                    fontSize: 14.sp,
                                                     fontFamily: "Lato",
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight:
@@ -333,13 +327,12 @@ class HomeTab extends StatelessWidget {
                                               ),
                                               WidgetSpan(
                                                   child: Container(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8),
+                                                padding: EdgeInsets.only(left: 2.w),
                                                 child: Text(
                                                   "\$${controller.productLists.value[index].price}",
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                       color: Colors.black,
-                                                      fontSize: 26,
+                                                      fontSize: 14.sp,
                                                       fontFamily: "Roboto",
                                                       fontStyle:
                                                           FontStyle.normal,
@@ -357,7 +350,7 @@ class HomeTab extends StatelessWidget {
                                               .value[index].ratingCount!
                                               .toDouble(),
                                           itemCount: 5,
-                                          itemSize: 20,
+                                          itemSize: 14.sp,
                                           itemPadding:
                                               const EdgeInsets.symmetric(
                                                   horizontal: 0),

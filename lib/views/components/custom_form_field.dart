@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sizer/sizer.dart';
 
 class CustomFormField extends StatelessWidget {
   final TextEditingController controller;
@@ -16,15 +17,15 @@ class CustomFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 5.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: const TextStyle(
-                color: Color(0xFF858C90),
-                fontSize: 22,
+            style: TextStyle(
+                color: const Color(0xFF858C90),
+                fontSize: 14.sp,
                 fontFamily: "Roboto",
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.normal),
@@ -36,9 +37,11 @@ class CustomFormField extends StatelessWidget {
             child: TextField(
               controller: controller,
               autocorrect: true,
+              textAlign: TextAlign.left,
+              textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 hintText: hint,
-                hintStyle: const TextStyle(color: Colors.grey),
+                hintStyle: TextStyle(color: Colors.grey, fontSize: 14.sp),
                 filled: true,
                 fillColor: Colors.white70,
                 enabledBorder: const OutlineInputBorder(
@@ -50,6 +53,7 @@ class CustomFormField extends StatelessWidget {
                   borderSide: BorderSide(color: Colors.redAccent),
                 ),
               ),
+              style: TextStyle(color: Colors.black, fontSize: 14.sp),
             ),
           )
         ],

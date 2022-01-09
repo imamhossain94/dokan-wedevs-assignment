@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -25,14 +26,14 @@ class _ProfileTabState extends State<ProfileTab> {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(100.0),
+          preferredSize: Size.fromHeight(10.h),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             AppBar(
-              title: const Text(
+              title: Text(
                 "My Account",
                 style: TextStyle(
-                    color: Color(0xFF222455),
-                    fontSize: 26,
+                    color: const Color(0xFF222455),
+                    fontSize: 18.sp,
                     fontFamily: "Roboto",
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold),
@@ -49,18 +50,18 @@ class _ProfileTabState extends State<ProfileTab> {
             children: [
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 30),
+                  padding: EdgeInsets.only(bottom: 3.h),
                   child: DottedBorder(
                     borderType: BorderType.Circle,
-                    radius: const Radius.circular(70),
-                    padding: const EdgeInsets.all(6),
+                    radius: Radius.circular(22.w),
+                    padding: EdgeInsets.all(2.w),
                     color: const Color(0xFFFFADAD),
                     dashPattern: const [6, 3],
                     child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(70)),
+                      borderRadius: BorderRadius.all(Radius.circular(22.w)),
                       child: Obx(() => Container(
-                            height: 140,
-                            width: 140,
+                            height: 44.w,
+                            width: 44.w,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: profileTabController.currentUser
@@ -80,9 +81,9 @@ class _ProfileTabState extends State<ProfileTab> {
               Obx(
                 () => Text(
                   profileTabController.currentUser.value.name??"",
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: Colors.black,
-                      fontSize: 26,
+                      fontSize: 16.sp,
                       fontFamily: "Roboto",
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.bold),
@@ -90,15 +91,15 @@ class _ProfileTabState extends State<ProfileTab> {
               ),
               Obx(() => Text(
                     profileTabController.currentUser.value.email??"",
-                    style: const TextStyle(
-                        color: Color(0xFF535353),
-                        fontSize: 26,
+                    style: TextStyle(
+                        color: const Color(0xFF535353),
+                        fontSize: 16.sp,
                         fontFamily: "Lato",
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.normal),
                   )),
               Padding(
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(7.w),
                 child: Card(
                   elevation: 4,
                   shape: RoundedRectangleBorder(
@@ -139,8 +140,8 @@ class _ProfileTabState extends State<ProfileTab> {
                               controller: profileTabController.zipCodeController.value,
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 30, horizontal: 15),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 3.h, horizontal: 5.w),
                               child: Row(
                                 children: [
                                   Expanded(
@@ -153,17 +154,17 @@ class _ProfileTabState extends State<ProfileTab> {
                                               color: Color(0xFFD2DBE0))),
                                       elevation: 0,
                                       child: SizedBox(
-                                          height: 50,
+                                          height: 8.h,
                                           child: CupertinoButton(
                                               onPressed: () {
                                                 Get.back();
                                               },
                                               padding: EdgeInsets.zero,
-                                              child: const Text(
+                                              child: Text(
                                                 "Cancel",
                                                 style: TextStyle(
-                                                    color: Color(0xFF818995),
-                                                    fontSize: 20,
+                                                    color: const Color(0xFF818995),
+                                                    fontSize: 14.sp,
                                                     fontFamily: "Roboto",
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight:
@@ -172,12 +173,12 @@ class _ProfileTabState extends State<ProfileTab> {
                                               color: Colors.white)),
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 20,
+                                  SizedBox(
+                                    width: 5.w,
                                   ),
                                   Expanded(
                                     child: SizedBox(
-                                        height: 50,
+                                        height: 8.h,
                                         child: CupertinoButton(
                                             onPressed: () async{
 
@@ -194,11 +195,11 @@ class _ProfileTabState extends State<ProfileTab> {
 
                                             },
                                             padding: EdgeInsets.zero,
-                                            child: const Text(
+                                            child: Text(
                                               "Save",
                                               style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 20,
+                                                  fontSize: 14.sp,
                                                   fontFamily: "Lato",
                                                   fontStyle: FontStyle.normal,
                                                   fontWeight:
