@@ -72,129 +72,258 @@ class HomeTab extends StatelessWidget {
                   TextButton.icon(
                       onPressed: () {
 
-                        Get.bottomSheet(
-                          Container(
-                              decoration: const BoxDecoration(
-                                color: Color(0xFFF8F8F8),
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(8),
-                                  topLeft: Radius.circular(8),
-                                ),
+
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(8),
+                                topLeft: Radius.circular(8),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Center(
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              top: 10, bottom: 30),
-                                          child: SizedBox(
-                                            width: 50,
-                                            child: Divider(
-                                              height: 3,
-                                              thickness: 3,
-                                              color: Color(0xFFFFD3DD),
-                                            ),
+                            ),
+                            context: context,
+                            builder: (builder){
+                              return Padding(
+                                padding: EdgeInsets.all(5.w),
+                                child: Wrap(
+                                  crossAxisAlignment: WrapCrossAlignment.start,
+                                  children: [
+                                    Center(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(top: 1.h, bottom: 3.h),
+                                        child: SizedBox(
+                                          width: 20.w,
+                                          child: Divider(
+                                            height: 1.h,
+                                            thickness: 3,
+                                            color: const Color(0xFFFFD3DD),
                                           ),
                                         ),
                                       ),
-                                      const Text(
-                                        "Filter",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 24,
-                                            fontFamily: "Roboto",
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(
-                                        height: 30,
-                                      ),
-                                      CustomFilterItemList(
+                                    ),
+                                    Text(
+                                      "Filter",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18.sp,
+                                          fontFamily: "Roboto",
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 5.h, bottom: 3.h),
+                                      child: CustomFilterItemList(
                                         onValueChanged: (value) {
-                                            homeTabController.filterMethod = value;
+                                          homeTabController.filterMethod = value;
                                         },
                                       ),
-                                      const SizedBox(
-                                        height: 60,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Card(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  side: const BorderSide(
-                                                      width: 0.5,
-                                                      color: Color(0xFFD2DBE0))),
-                                              elevation: 0,
-                                              child: SizedBox(
-                                                  height: 60,
-                                                  child: CupertinoButton(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      padding: EdgeInsets.zero,
-                                                      child: const Text(
-                                                        "Cancel",
-                                                        style: TextStyle(
-                                                            color:
-                                                                Color(0xFF818995),
-                                                            fontSize: 20,
-                                                            fontFamily: "Roboto",
-                                                            fontStyle:
-                                                                FontStyle.normal,
-                                                            fontWeight: FontWeight
-                                                                .normal),
-                                                      ),
-                                                      color: Colors.white)),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 30,
-                                          ),
-                                          Expanded(
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Card(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(10),
+                                                side: const BorderSide(
+                                                    width: 0.5,
+                                                    color: Color(0xFFD2DBE0))),
+                                            elevation: 0,
                                             child: SizedBox(
-                                                height: 60,
+                                                height: 8.h,
                                                 child: CupertinoButton(
                                                     onPressed: () {
-                                                      homeTabController.filterProduct();
                                                       Get.back();
                                                     },
                                                     padding: EdgeInsets.zero,
-                                                    child: const Text(
-                                                      "Apply",
+                                                    child: Text(
+                                                      "Cancel",
                                                       style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 20,
-                                                          fontFamily: "Lato",
+                                                          color:
+                                                          Color(0xFF818995),
+                                                          fontSize: 14.sp,
+                                                          fontFamily: "Roboto",
                                                           fontStyle:
-                                                              FontStyle.normal,
-                                                          fontWeight:
-                                                              FontWeight.normal),
+                                                          FontStyle.normal,
+                                                          fontWeight: FontWeight
+                                                              .normal),
                                                     ),
-                                                    color:
-                                                        const Color(0xFF1ABC9C))),
+                                                    color: Colors.white)),
                                           ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                        ),
+                                        SizedBox(
+                                          width: 5.w,
+                                        ),
+                                        Expanded(
+                                          child: SizedBox(
+                                              height: 8.h,
+                                              child: CupertinoButton(
+                                                  onPressed: () {
+                                                    homeTabController.filterProduct();
+                                                    Get.back();
+                                                  },
+                                                  padding: EdgeInsets.zero,
+                                                  child: Text(
+                                                    "Apply",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 14.sp,
+                                                        fontFamily: "Lato",
+                                                        fontStyle:
+                                                        FontStyle.normal,
+                                                        fontWeight:
+                                                        FontWeight.normal),
+                                                  ),
+                                                  color:
+                                                  const Color(0xFF1ABC9C))),
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
-                              )),
-                          isDismissible: true,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(8),
-                              topLeft: Radius.circular(8),
-                            ),
-                          ),
-                          enableDrag: true,
+                              );
+                            }
                         );
+
+
+
+                        //
+                        // Get.bottomSheet(
+                        //   Container(
+                        //       decoration: const BoxDecoration(
+                        //         color: Color(0xFFF8F8F8),
+                        //         borderRadius: BorderRadius.only(
+                        //           topRight: Radius.circular(8),
+                        //           topLeft: Radius.circular(8),
+                        //         ),
+                        //       ),
+                        //       child: Padding(
+                        //         padding: const EdgeInsets.all(20.0),
+                        //         child: SingleChildScrollView(
+                        //           child: Column(
+                        //             crossAxisAlignment: CrossAxisAlignment.start,
+                        //             children: [
+                        //               const Center(
+                        //                 child: Padding(
+                        //                   padding: EdgeInsets.only(
+                        //                       top: 10, bottom: 30),
+                        //                   child: SizedBox(
+                        //                     width: 50,
+                        //                     child: Divider(
+                        //                       height: 3,
+                        //                       thickness: 3,
+                        //                       color: Color(0xFFFFD3DD),
+                        //                     ),
+                        //                   ),
+                        //                 ),
+                        //               ),
+                        //               const Text(
+                        //                 "Filter",
+                        //                 style: TextStyle(
+                        //                     color: Colors.black,
+                        //                     fontSize: 24,
+                        //                     fontFamily: "Roboto",
+                        //                     fontStyle: FontStyle.normal,
+                        //                     fontWeight: FontWeight.bold),
+                        //               ),
+                        //               const SizedBox(
+                        //                 height: 30,
+                        //               ),
+                        //               CustomFilterItemList(
+                        //                 onValueChanged: (value) {
+                        //                     homeTabController.filterMethod = value;
+                        //                 },
+                        //               ),
+                        //               const SizedBox(
+                        //                 height: 60,
+                        //               ),
+                        //               Row(
+                        //                 children: [
+                        //                   Expanded(
+                        //                     child: Card(
+                        //                       shape: RoundedRectangleBorder(
+                        //                           borderRadius:
+                        //                               BorderRadius.circular(10),
+                        //                           side: const BorderSide(
+                        //                               width: 0.5,
+                        //                               color: Color(0xFFD2DBE0))),
+                        //                       elevation: 0,
+                        //                       child: SizedBox(
+                        //                           height: 60,
+                        //                           child: CupertinoButton(
+                        //                               onPressed: () {
+                        //                                 Get.back();
+                        //                               },
+                        //                               padding: EdgeInsets.zero,
+                        //                               child: const Text(
+                        //                                 "Cancel",
+                        //                                 style: TextStyle(
+                        //                                     color:
+                        //                                         Color(0xFF818995),
+                        //                                     fontSize: 20,
+                        //                                     fontFamily: "Roboto",
+                        //                                     fontStyle:
+                        //                                         FontStyle.normal,
+                        //                                     fontWeight: FontWeight
+                        //                                         .normal),
+                        //                               ),
+                        //                               color: Colors.white)),
+                        //                     ),
+                        //                   ),
+                        //                   const SizedBox(
+                        //                     width: 30,
+                        //                   ),
+                        //                   Expanded(
+                        //                     child: SizedBox(
+                        //                         height: 60,
+                        //                         child: CupertinoButton(
+                        //                             onPressed: () {
+                        //                               homeTabController.filterProduct();
+                        //                               Get.back();
+                        //                             },
+                        //                             padding: EdgeInsets.zero,
+                        //                             child: const Text(
+                        //                               "Apply",
+                        //                               style: TextStyle(
+                        //                                   color: Colors.white,
+                        //                                   fontSize: 20,
+                        //                                   fontFamily: "Lato",
+                        //                                   fontStyle:
+                        //                                       FontStyle.normal,
+                        //                                   fontWeight:
+                        //                                       FontWeight.normal),
+                        //                             ),
+                        //                             color:
+                        //                                 const Color(0xFF1ABC9C))),
+                        //                   ),
+                        //                 ],
+                        //               )
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       )),
+                        //   isDismissible: true,
+                        //   shape: const RoundedRectangleBorder(
+                        //     borderRadius: BorderRadius.only(
+                        //       topRight: Radius.circular(8),
+                        //       topLeft: Radius.circular(8),
+                        //     ),
+                        //   ),
+                        //   enableDrag: true,
+                        // );
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                       },
                       icon: Icon(

@@ -1,6 +1,7 @@
 import 'package:dokan_wedevs_assignment/services/get_storage_service.dart';
 import 'package:dokan_wedevs_assignment/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class CustomFilterItemList extends StatefulWidget {
   final ValueChanged<String> onValueChanged;
@@ -45,7 +46,7 @@ class _CustomFilterItemListState extends State<CustomFilterItemList> {
 
   Widget filterItem({required ValueChanged<int> onValueChanged, required String title, required bool value}){
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 1.h),
       child: Row(
         children: [
           SizedBox(
@@ -65,9 +66,9 @@ class _CustomFilterItemListState extends State<CustomFilterItemList> {
           const SizedBox(width: 12,),
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
                 color: Colors.black,
-                fontSize: 22,
+                fontSize: 14.sp,
                 fontFamily: "Roboto",
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.normal),
