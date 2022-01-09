@@ -269,16 +269,19 @@ Body:
   "password": "test"
 }
 ```
+
 SignUp Response:
+```
 {
     "code": "wp_die",
-    "message": "<h1>Error establishing a database connection</h1>",
+    "message": "Error establishing a database connection",
     "data": {
         "status": 500
     },
     "additional_errors": []
 }
 ```
+
 
 ## 🧑 Author
 
