@@ -461,7 +461,7 @@ class HomeTab extends StatelessWidget {
                                                   "\$${controller.productLists.value[index].price}",
                                                   style: TextStyle(
                                                       color: Colors.black,
-                                                      fontSize: 14.sp,
+                                                      fontSize: 18.sp,
                                                       fontFamily: "Roboto",
                                                       fontStyle:
                                                           FontStyle.normal,
