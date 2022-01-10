@@ -91,7 +91,7 @@ class _SignInPageState extends State<SignInPage> {
 
                         String email = emailController.text;
                         String password = passwordController.text;
-                        bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+                        bool emailValid = email.isNotEmpty?true:false; //RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
                         bool passValid = password.isNotEmpty?true:false;
 
                         if(emailValid && passValid) {
