@@ -27,7 +27,7 @@ View design on <a href="https://www.figma.com/file/lHDVMCVsE6R3NWxxG6Wfbo/Demo?n
 
 ## 📁 Download Now
 
-Get it from <a href="https://drive.google.com/file/d/11Vnc10UpDa6zx5l2Mt2FEMUIw-psG3KX/view?usp=sharing">Google drive</a>
+Get it from <a href="https://drive.google.com/file/d/1_UpUIeUy219mFgJBfdJL4XwSsAWAdEhZ/view?usp=sharing">Google drive</a>
 
 ## 💻 Installation steps
 
@@ -255,7 +255,7 @@ const baseURL = "https://newagedevs.com/wp-json";
 
 
 
-## Note
+## Note [Fixed]
 The Apis provided by weDevs are not working and I mailed them about that issue on 8 January 2022 but no one replies. So, I use my own WordPress Apis. Don't be confused Thank you!!
 
 SignUp Request:
